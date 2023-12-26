@@ -26,6 +26,8 @@ public class Main {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(persona1);
         System.out.println(json);
+        Person deserializePerson = new Gson().fromJson(json, Person.class);
+        System.out.println(deserializePerson);
 
 
     }
