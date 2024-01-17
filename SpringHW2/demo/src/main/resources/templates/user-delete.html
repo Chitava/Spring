@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Create user</title>
+</head>
+<body>
+<form action="#" th:action="@{/user-delete}" th:object="${user}" method="post">
+    <label for="id">User id</label>
+    <input type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <input type="submit" value="Delete User">
+</form>
+</body>
+</html>
