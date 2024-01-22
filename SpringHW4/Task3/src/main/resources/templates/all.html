@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <title>ДЗ №4 задача 3</title>
+</head>
+<body>
+    <header>
+        <h3>Добавляем сотрудника сотрудника</h3>
+    </header>
+    <container class="work__fields">
+        <section th:insert= "~{index :: menu}"></section>
+        <section class="work__field">
+            <table><tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Tелефон</th>
+                <th>Cтавка</th>
+                <tr th:each="w: ${workers}" >
+                    <td th:text="${w.firstName}"></td>
+                    <td th:text="${w.secondName}"></td>
+                    <td th:text="${w.phone}"></td>
+                    <td th:text="${w.salary}"></td>
+                </tr>
+            </tr></table>
+            
+        </section>
+    </container>  
+</body>
+</html>
