@@ -30,6 +30,16 @@ public class WorkerController {
         model.addAttribute("workers", workerService.getAllWorkers());
         return "all";
     }
+    @GetMapping("/add")
+    public String addUsers(Model model){
+        return "add";
+    }
+
+    @GetMapping("/salary")
+    public String sallary(Model model){
+        return "salary";
+    }
+
     @PostMapping("/addworker")
     public String addUser(@RequestBody Worker worker, Model model){
         workerService.addWorker(worker);

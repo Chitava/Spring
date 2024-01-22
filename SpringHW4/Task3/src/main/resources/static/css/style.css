@@ -20,7 +20,8 @@ header{
     height: 200px;
     margin-top: 50px;
     box-shadow: 6px 8px rgb(189, 188, 188);
-    border-radius: 10px;     
+    border-radius: 10px;
+    gap: 15px;     
 }
 
 button{
@@ -46,7 +47,10 @@ button:active{
 }
 
 .work__field{
-    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 55px;
+    gap: 10px
 }
 
 table {
@@ -66,4 +70,17 @@ table {
 
  td, th{
     text-align: center;
+ }
+
+ .sent__button{
+    margin-top: 30px;
+ }
+
+ .div__button{
+    width: 100%;
+    align-items: center;
+ }
+
+ label{
+    font-size: 18px;
  }

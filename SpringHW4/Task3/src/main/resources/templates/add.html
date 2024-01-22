@@ -12,24 +12,19 @@
         <h3>Добавить сотрудника</h3>
     </header>
     <container class="work__fields">
-        <section class="menu">
-            <ul><a href="add.html"><button>Добавить сотрудника</button></a></ul>
-            <ul><a href="all.html"><button>Посмотреть всех сотрудников</button></a></ul>
-            <ul><a href="salary.html"><button>Расчет зарплаты сотрудника</button></a></ul>
-            <ul><a href="del.html"><button>Удаление сотрудника</button></a></ul>
-        </section>
+        <section th:insert= "~{index :: menu}"></section>
         <section class="work__field">
             <form action="/addworker" method="post"></form>
             <label for="name">Введите фамилию сотрудника</label>
-            <input type="text" name="name"><br />
-            <label for="secondname">Введите фамилию сотрудника</label>
-            <input type="text" name="secondname"><br />
+            <input type="text" name="name">
+            <label for="secondname">Введите имя сотрудника</label>
+            <input type="text" name="secondname">
             <label for="phone">Введите телефон</label>
-            <input type="phone" name="phone"><br />
+            <input type="number" name="phone">
             <label for="phone">Введите ставку в день .р</label>
-            <input type="number" step="any" name="salary"><br />
-            <button type="submit">Принять сотрудника на работу</button>
-
+            <input type="number" step="any" name="salary">
+            <div class="div__button"><button class="sent__button" type="submit">Принять сотрудника на работу</button></div>
+            
         </section>
     </container>     
 </body>
