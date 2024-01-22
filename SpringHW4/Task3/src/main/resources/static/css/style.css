@@ -47,11 +47,15 @@ button:active{
 }
 
 .work__field{
-    display: flex;
+    display: block;
     flex-direction: column;
     margin-top: 55px;
     gap: 10px
 }
+form {
+    display:flex;
+    flex-direction: column;
+    }
 
 table {
     border-top: 3px solid grey;

@@ -17,6 +17,9 @@ public class Worker {
         this.salary = salary;
 
     }
+
+    public Worker() {
+    }
     //endregion
 
     //region getters setters
@@ -121,6 +124,15 @@ public class Worker {
     private int phone;
     private int salary;
     private int workDays;
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
     //endregion
 
 }

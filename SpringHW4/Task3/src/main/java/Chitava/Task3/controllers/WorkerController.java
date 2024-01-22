@@ -5,76 +5,85 @@ import Chitava.Task3.services.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @Controller
 public class WorkerController {
-
+    /**
+     *
+     * Сервис работы с сотрудниками
+     */
+    @Autowired
     private final WorkerService workerService;
 
     public WorkerController(WorkerService workerService) {
         this.workerService = workerService;
     }
 
-//    @GetMapping("/")
-//    public String start(Model model){
-//        model.addAttribute("all", "all");
-//
-//        return "index.html";
-//    }
-
-    @GetMapping("/all")
+    /**
+     * Просмотр всех сотрудников
+     * @param model
+     * @return
+     */
+    @RequestMapping(value="/all", method= RequestMethod.GET)
     public String allWorkers(Model model){
-        model.addAttribute("workers", workerService.getAllWorkers());
+        ArrayList<Worker> workers = workerService.getAllWorkers();
+        model.addAttribute("workers", workers);
         return "all";
     }
-    @GetMapping("/add")
-    public String addUsers(Model model){
+
+    /**
+     * Запрос страницы добавления нового пользователя
+     * @return
+     */
+    @RequestMapping(value="/add", method= RequestMethod.GET)
+    public String addWorker(Model model) {
+        model.addAttribute("worker", new Worker());
         return "add";
     }
 
+
+
+    /**
+     * Запрос страницы расчета зарплаты
+     * @param
+     * @return
+     */
     @GetMapping("/salary")
-    public String sallary(Model model){
+    public String sallary(){
         return "salary";
     }
 
-    @PostMapping("/addworker")
-    public String addUser(@RequestBody Worker worker, Model model){
+    /**
+     * Добавление нового пользователя методом post
+     * @param worker
+     * @param model
+     * @return
+     */
+
+    @RequestMapping(value="/addworker", method=RequestMethod.POST)
+    public String addWorker(@ModelAttribute Worker worker, Model model) {
         workerService.addWorker(worker);
-        model.addAttribute("workers", workerService.getAllWorkers());
+        ArrayList<Worker> workers = workerService.getAllWorkers();
+        model.addAttribute("workers", workers);
         return "all";
     }
 
-/**
-    private final UserService userService;
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    @GetMapping("/del")
+    public String del(){
+        return "del";
     }
 
-    @GetMapping("/users")
-    public String findAll(Model model){
-        List<User> users = userService.findAll();
-
-
-        model.addAttribute("users", users);
-        return "user-list";
-        //return "home.html";
+    @RequestMapping(value="/delworker", method=RequestMethod.POST)
+    public String delWorker(@ModelAttribute String workerName, Model model) {
+        workerService.deleteWorker(workerName);
+        ArrayList<Worker> workers = workerService.getAllWorkers();
+        model.addAttribute("workers", workers);
+        return "all";
     }
 
-    @GetMapping("/user-create")
-    public String createUserForm(User user){
-        return "user-create";
-    }
-
-    @PostMapping("/user-create")
-    public String createUser(User user){
-        userService.saveUser(user);
-        return "redirect:/users";
-    }
-*/
 
 }

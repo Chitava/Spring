@@ -1,6 +1,7 @@
 package Chitava.Task3.repositorys;
 
 import Chitava.Task3.domens.Worker;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class WorkersRepository {
     //endregion
 
     //region конструкторы
+
     public WorkersRepository() {
     }
     //endregion

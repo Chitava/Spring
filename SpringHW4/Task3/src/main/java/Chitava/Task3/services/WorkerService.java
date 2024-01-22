@@ -44,8 +44,8 @@ public class WorkerService {
         return repository.getWorkers();
     }
 
-    public void deleteWorker (Worker worker){
-        repository.deleteWorker(worker.getFirstName());
+    public void deleteWorker (String name){
+        repository.deleteWorker(name);
     }
 
 }
