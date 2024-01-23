@@ -109,6 +109,14 @@ public class Worker {
         this.workDays = workDays;
     }
 
+    public int getMonthSalary() {
+        return monthSalary;
+    }
+
+    public void setMonthSalary(int monthSalary) {
+        this.monthSalary = monthSalary;
+    }
+
     //region поля
     /**
      * класс сотрудник
@@ -118,12 +126,14 @@ public class Worker {
      * телефон
      * Зарплата в день
      * количество отработанных дней
+     * зарплата за месяц
      */
     private String firstName;
     private String secondName;
     private int phone;
     private int salary;
     private int workDays;
+    private int monthSalary;
 
     @Override
     public String toString() {

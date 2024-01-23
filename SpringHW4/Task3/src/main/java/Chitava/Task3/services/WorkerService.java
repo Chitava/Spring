@@ -45,8 +45,20 @@ public class WorkerService {
         return repository.getWorkers();
     }
 
+    /**
+     * Удаление сотрудника
+     * @param name фамилия сотрудника
+     */
     public void deleteWorker (String name){
         repository.deleteWorker(name);
+    }
+
+    public Worker worker(String name, int workDays){
+        Worker worker = repository.getWorker(name);
+        int salary = workDays*worker.getSalary();
+        worker.setWorkDays(workDays);
+        worker.setMonthSalary(salary);
+        return worker;
     }
 
 }

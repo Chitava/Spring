@@ -32,7 +32,6 @@ public class WorkerController {
     public String allWorkers(Model model){
         Collection<Worker> workers = workerService.getAllWorkers();
         model.addAttribute("workers", workers);
-        System.out.println(workerService.getAllWorkers());
         return "all";
     }
 
@@ -54,9 +53,23 @@ public class WorkerController {
      * @return
      */
     @GetMapping("/salary")
-    public String sallary(){
+    public String sal(){
         return "salary";
     }
+
+
+    @RequestMapping(value="/sal", method=RequestMethod.POST)
+    public String sallary(@RequestParam("workerName") String workerName,
+                          @RequestParam("workdays") int workdays, Model model) {
+          Worker worker = workerService.worker(workerName, workdays);
+          model.addAttribute("worker", worker);
+
+        return "workersalary";
+    }
+
+
+
+
 
     /**
      * Добавление нового пользователя методом post
@@ -64,7 +77,6 @@ public class WorkerController {
      * @param model
      * @return
      */
-
     @RequestMapping(value="/addworker", method=RequestMethod.POST)
     public String addWorker(@ModelAttribute Worker worker, Model model) {
         workerService.addWorker(worker);
@@ -73,12 +85,21 @@ public class WorkerController {
         return "all";
     }
 
-
+    /**
+     * Запрос страницы удаления сотрудника
+     * @return
+     */
     @GetMapping("/del")
     public String del(){
         return "del";
     }
 
+    /**
+     * Удаление сотрудника
+     * @param workerName имя сотрудника
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/delworker", method=RequestMethod.POST)
     public String delWorker(@ModelAttribute (value = "workerName") String workerName, Model model) {
         workerService.deleteWorker(workerName);

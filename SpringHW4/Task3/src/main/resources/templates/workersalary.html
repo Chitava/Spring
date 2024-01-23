@@ -14,21 +14,15 @@
   </head>
   <body>
     <header>
-      <h3>Расчетать зарплату</h3>
+      <h3>Расчет сотрудника</h3>
     </header>
     <container class="work__fields">
       <section th:insert= "~{index :: menu}"></section>
       <section class="work__field">
         <form action="/sal" method="post" >
-          <label >Введите фамилию сотрудника которого нужно уволить</label>
-          <input type="text" th:name="workerName"/>
-          <label >Введите количество отработанных дней</label>
-          <input type="number" th:name="workdays"/>
-          <div class="div__button">
-            <button class="sent__button" type="submit">
-              Расчитать сотрудника
-            </button>
-          </div>
+          <label >Сотрудник <span th:text="${worker.firstName}"></span> </label>
+          <label >Количество отработанных дней <span th:text="${worker.workDays}"></span></label>
+          <label >Зарплата <span th:text="${worker.monthSalary}"></span> р. </label>
         </form>
         </form>
       </section>

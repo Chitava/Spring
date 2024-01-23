@@ -1,13 +1,11 @@
 package Chitava.Task3.repositorys;
 
 import Chitava.Task3.domens.Worker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
-import static java.util.stream.Collectors.toList;
+import java.util.Optional;
 
 /**
  * Хранилище сотрудников
@@ -49,6 +47,20 @@ public class WorkersRepository {
 
         workers.removeIf(x -> x.getFirstName().equals(name));
 
+    }
+
+    /**
+     * Поиск сотрудника
+     * @param name имя сотрудника
+     * @return сотрудник
+     */
+    public Worker getWorker(String name) {
+        Worker worker = null;
+        Optional findWorker = workers.stream().filter(w -> w.getFirstName().equals(name)).findFirst();
+        if (findWorker.isPresent()) {
+            worker = (Worker) findWorker.get();
+        }
+        return worker;
     }
     //endregion
 }
