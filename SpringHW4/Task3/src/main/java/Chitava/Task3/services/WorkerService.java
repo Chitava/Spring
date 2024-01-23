@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Сервис обработки сотрудников
@@ -40,7 +41,7 @@ public class WorkerService {
      *
      * @return список сотрудников
      */
-    public ArrayList<Worker> getAllWorkers(){
+    public Collection<Worker> getAllWorkers(){
         return repository.getWorkers();
     }
 

@@ -18,12 +18,12 @@
     <container class="work__fields">
       <section th:insert= "~{index :: menu}"></section>
       <section class="work__field">
-        <form action="#" th:action="@{/delWorker}" modelAttribute="workerName" method="post">
+        <form action="#" th:action="@{/delworker}" method="post">
           <label >Введите фамилию сотрудника которого нужно уволить</label>
-          <input type="text" th:="workerName"/>
+          <input type="text" th:name="workerName"/>
           <div class="div__button">
             <button class="sent__button" type="submit">
-              Принять сотрудника на работу
+              Уволить сотрудника
             </button>
           </div>
         </form>

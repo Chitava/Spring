@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 @Controller
 public class WorkerController {
@@ -29,8 +30,9 @@ public class WorkerController {
      */
     @RequestMapping(value="/all", method= RequestMethod.GET)
     public String allWorkers(Model model){
-        ArrayList<Worker> workers = workerService.getAllWorkers();
+        Collection<Worker> workers = workerService.getAllWorkers();
         model.addAttribute("workers", workers);
+        System.out.println(workerService.getAllWorkers());
         return "all";
     }
 
@@ -66,7 +68,7 @@ public class WorkerController {
     @RequestMapping(value="/addworker", method=RequestMethod.POST)
     public String addWorker(@ModelAttribute Worker worker, Model model) {
         workerService.addWorker(worker);
-        ArrayList<Worker> workers = workerService.getAllWorkers();
+        Collection<Worker> workers = workerService.getAllWorkers();
         model.addAttribute("workers", workers);
         return "all";
     }
@@ -78,9 +80,9 @@ public class WorkerController {
     }
 
     @RequestMapping(value="/delworker", method=RequestMethod.POST)
-    public String delWorker(@ModelAttribute String workerName, Model model) {
+    public String delWorker(@ModelAttribute (value = "workerName") String workerName, Model model) {
         workerService.deleteWorker(workerName);
-        ArrayList<Worker> workers = workerService.getAllWorkers();
+        Collection<Worker> workers = workerService.getAllWorkers();
         model.addAttribute("workers", workers);
         return "all";
     }
