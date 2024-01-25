@@ -16,9 +16,6 @@ public class RESTController {
     @Autowired
     NoteService service;
 
-
-
-
     @PostMapping("/create")
     public void createNote (@RequestBody Noute note){
         service.saveNote(note);

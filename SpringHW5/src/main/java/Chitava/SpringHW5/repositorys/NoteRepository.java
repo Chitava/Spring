@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -18,12 +19,12 @@ import java.util.Collection;
 @Repository
 public interface NoteRepository extends JpaRepository<Noute, Long> {
     /**
-     * Метод поиска заметки по id
+     * Метод поиска заметки по статусу
      * @param status статус заметки
      * @return Коллекцию записок
      */
 //    @Query("SELECT * FROM notes WHERE status = :status")
-//    Collection<Noute> findNouteByStatus (String status);
+//    List<Noute> findByStatus (String status);
 
 
 
