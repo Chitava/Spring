@@ -7,7 +7,6 @@ import lombok.Getter;
  * Класс статусов записок
  */
 @AllArgsConstructor
-@Getter
 public enum Status {
     //region поля
     NOT_STARTED ("не начата"),
@@ -15,12 +14,6 @@ public enum Status {
     COMPLETED ("завершена");
     private String status;
     //endregion
-
-    /**
-     * Переопределяем метод вывода статуса заявки
-     * @return Статус заявки - не начата
-     */
-    //region переопределений
     @Override
     public String toString() {
         return String.format("Статус заявки - %s", status);

@@ -1,6 +1,8 @@
 package Chitava.SpringHW5.services;
 import Chitava.SpringHW5.models.Noute;
+import Chitava.SpringHW5.models.Status;
 import Chitava.SpringHW5.repositorys.NoteRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import java.util.Optional;
  * Класс работы с заметками
  */
 @Service
+@AllArgsConstructor
 public class NoteService {
     //region методы
     /**
@@ -52,8 +55,14 @@ public class NoteService {
      * @param id идентификатор
      * @param status статус
      */
+
+
+//    public Noute findeByStatus (Status status){
+//        return (Noute) repository.findByStatus(status);
+//
+//    }
 //    public void updateStatusNote(Long id, String status){
-//        repository.changeStatus(id, status);
+//        repository.setNouteStatus(id, status);
 //    }
     //endregion
 
@@ -65,9 +74,5 @@ public class NoteService {
     private NoteRepository repository;
     //endregion
 
-    //region конструкторы
-    public NoteService(NoteRepository repository) {
-        this.repository = repository;
-    }
-    //endregion
+
 }
