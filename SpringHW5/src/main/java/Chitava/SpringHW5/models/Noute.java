@@ -28,7 +28,7 @@ public class Noute {
     /**
      * Статус записки, конвертация перечисления для хранения в базе данных
      */
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Convert(converter = EnumConverter.class)
     Status status = Status.NOT_STARTED;
 

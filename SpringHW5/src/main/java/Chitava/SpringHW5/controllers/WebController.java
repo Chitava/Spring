@@ -1,13 +1,13 @@
 package Chitava.SpringHW5.controllers;
 import Chitava.SpringHW5.models.Noute;
+import Chitava.SpringHW5.models.Status;
+import Chitava.SpringHW5.services.EnumConverter;
 import Chitava.SpringHW5.services.NoteService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -23,6 +23,7 @@ public class WebController {
      * Создаем сервис для работы с записками
      */
     final NoteService service;
+    final EnumConverter converter;
 
     /**
      * Вывод всех записок
@@ -50,7 +51,7 @@ public class WebController {
             model.addAttribute("note", note.get());
             return "note";
         } catch (NoSuchElementException e) {
-            model.addAttribute(e.getMessage());
+            model.addAttribute("message", e.getMessage());
             return "404";
         }
     }
@@ -68,5 +69,30 @@ public class WebController {
         model.addAttribute(service.findAllNotes());
         return "index";
     }
+
+    /**
+     * метод поиска заметки по статусу
+     * @param stat искомый статус
+     * @param model страницы отображения
+     * @return страница со всеми отфильтрованными записками
+     */
+    @PostMapping("/status")
+    public String editNote(@RequestBody String stat, Model model){
+        Status status = converter.convertToEntityAttribute(stat);
+        model.addAttribute("notes", service.findeByStatus(status));
+        return "index";
+    }
+
+    @PutMapping("edit/{id}")
+    public String chengenNoteStatus(@PathVariable Long id, @RequestBody String stat, Model model){
+        System.out.println(stat);
+        Status status = converter.convertToEntityAttribute(stat);
+        System.out.println(status);
+        service.updateStatusNote(id, status);
+        model.addAttribute(service.findAllNotes());
+        return "index";
+    }
+
+
 }
 

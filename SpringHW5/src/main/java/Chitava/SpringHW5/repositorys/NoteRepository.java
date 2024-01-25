@@ -19,27 +19,25 @@ import java.util.List;
  */
 
 @Repository
+@Transactional
 public interface NoteRepository extends JpaRepository<Noute, Long> {
-//    @Modifying
-//    @Query("UPDATE notes SET status = :status WHERE id = :id")
-//    void setNouteStatus(Long id, String status);
+
 
     /**
      * Метод поиска заметки по статусу
      * @param status статус заметки
      * @return Коллекцию записок
      */
-//    @Query("SELECT * FROM notes WHERE status = :status")
-//    List<Noute> findByStatus (Status status);
-
-
+    Collection<Noute> findByStatus(Status status);
 
     /**
      * Метод изменения статуса записки
      * @param id идентификатор записки
      * @param status статус записки
      */
-//    @Modifying
-//    @Query("UPDATE notes SET status = :status WHERE id = :id")
-//    void changeStatus(@Param("id") Long id, @Param("status") String status);
+
+    @Modifying
+    @Query(value = "update notes set notes.status = :status where notes.id = :id", nativeQuery = true)
+    void updateStatus(@Param("status") Status status, @Param("id") Long id);
+
 }

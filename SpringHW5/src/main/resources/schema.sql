@@ -2,6 +2,6 @@ CREATE TABLE IF NOT EXISTS notes
 (
     id LONG NOT NULL AUTO_INCREMENT PRIMARY KEY,
     annotation VARCHAR (200),
-    status INTEGER,
+    status VARCHAR (20),
     time DATETIME
 );

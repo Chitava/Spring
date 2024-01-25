@@ -10,7 +10,7 @@
     <tr th:each="w: ${notes}" >
         <td th:text="${w.id}"></td>
         <td th:text="${w.annotation}"></td>
-        <td th:text="${w.status.toString()}"></td>
+        <td th:text="${w.status}"></td>
         <td th:text="${w.time}"></td>
 
     </tr>

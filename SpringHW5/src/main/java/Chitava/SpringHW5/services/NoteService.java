@@ -1,4 +1,5 @@
 package Chitava.SpringHW5.services;
+
 import Chitava.SpringHW5.models.Noute;
 import Chitava.SpringHW5.models.Status;
 import Chitava.SpringHW5.repositorys.NoteRepository;
@@ -15,12 +16,21 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class NoteService {
+    //region поля
+    /**
+     * Создаем репозиторий
+     */
+    NoteRepository repository;
+    //endregion
+
     //region методы
+
     /**
      * Метод вывода всех заметок
+     *
      * @return коллекцию заметок
      */
-    public Collection<Noute> findAllNotes(){
+    public Collection<Noute> findAllNotes() {
         return (Collection<Noute>) repository.findAll();
     }
 
@@ -30,12 +40,13 @@ public class NoteService {
      * @param id идентификатор
      * @return заметку с идентификационным номером
      */
-    public Optional<Noute> getById (Long id){
+    public Optional<Noute> getById(Long id) {
         return repository.findById(id);
     }
 
     /**
      * Метод сохранения записки в базу данных
+     *
      * @param note записка
      */
     public void saveNote(Noute note) {
@@ -44,35 +55,37 @@ public class NoteService {
 
     /**
      * Метод удаления записки
+     *
      * @param id идентификационный номер
      */
-    public void deleteNode (Long id){
+    public void deleteNode(Long id) {
         repository.deleteById(id);
     }
 
     /**
-     * Метод обновления статуса записки
-     * @param id идентификатор
-     * @param status статус
+     *
+     * @param status
+     * @return
      */
+    public Collection<Noute> findeByStatus(Status status) {
+
+        return repository.findByStatus(status);
+    }
 
 
-//    public Noute findeByStatus (Status status){
-//        return (Noute) repository.findByStatus(status);
-//
-//    }
-//    public void updateStatusNote(Long id, String status){
-//        repository.setNouteStatus(id, status);
-//    }
-    //endregion
-
-    //region поля
     /**
-     * Создаем репозиторий
+     * Метод обновления статуса записки
+     * @param status статус
+     * @param id идентификатор записки
      */
-    @Autowired
-    private NoteRepository repository;
-    //endregion
+    public void updateStatusNote(Long id, Status status){
+        repository.updateStatus(status, id);
+
+    }
+        //endregion
 
 
-}
+
+
+    }
+
