@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"></html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table><tr>
+    <tr th:each="w: ${notes}" >
+        <td th:text="${w.annotation}"></td>
+        <td th:text="${w.status}"></td>
+        <td th:text="${w.time}"></td>
+
+    </tr>
+    </tr></table>
+
+</body>
+</html>
