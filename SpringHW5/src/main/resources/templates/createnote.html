@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link th:href="@{/css/style_note.css}" rel="stylesheet">
+    <title>Создание записки</title>
+</head>
+<body>
+    <section class="note__creator">
+
+
+
+        <form action="#" th:action="@{/createnote}" th:object="${noute}" method="post">
+            <h2>Введите текст записки</h2>
+
+<!--            <input type="text" th:field="*{annotation}" autofocus placeholder="Введите текст заметки">-->
+            </input>
+            <button>Создать записку</button>
+        </form>
+    </section>
+
+    
+</body>
+</html>

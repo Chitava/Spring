@@ -5,10 +5,12 @@ import Chitava.SpringHW5.services.EnumConverter;
 import Chitava.SpringHW5.services.NoteService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -24,6 +26,34 @@ public class WebController {
      */
     final NoteService service;
     final EnumConverter converter;
+
+
+    /**
+     * Выводим стартовую страницу
+     * @return index.html
+     */
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
+
+    /**
+     * Выводим страницу создания записки
+     * @return
+     */
+   @GetMapping("/createnote")
+   public String createNote(){
+        return "createnote";
+   }
+//    @RequestMapping(value = "/createnote", method = RequestMethod.POST,
+//            consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping("/createnote")
+    public String createNote (@RequestBody Noute note, Model model){
+        service.saveNote(note);
+        Collection<Noute> notes = service.findAllNotes();
+        model.addAttribute("notes", notes);
+        return "index";
+    }
 
     /**
      * Вывод всех записок
@@ -85,10 +115,9 @@ public class WebController {
 
     @PutMapping("edit/{id}")
     public String chengenNoteStatus(@PathVariable Long id, @RequestBody String stat, Model model){
-        System.out.println(stat);
-        Status status = converter.convertToEntityAttribute(stat);
-        System.out.println(status);
-        service.updateStatusNote(id, status);
+        System.out.println( converter.convertToEntityAttribute(stat));
+        System.out.println(converter.convertToDatabaseColumn(converter.convertToEntityAttribute(stat)));
+        service.updateStatusNote(id, converter.convertToEntityAttribute(stat));
         model.addAttribute(service.findAllNotes());
         return "index";
     }

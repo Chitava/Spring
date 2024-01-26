@@ -18,7 +18,7 @@ public enum Status {
     //endregion
     @Override
     public String toString() {
-        return String.format("Статус заявки - %s", status);
+        return status;
     }
-    //endregion
+
 }
