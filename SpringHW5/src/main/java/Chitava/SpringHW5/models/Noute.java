@@ -3,7 +3,10 @@ import Chitava.SpringHW5.services.EnumConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Класс записок
@@ -23,19 +26,23 @@ public class Noute {
     /**
      * Текст записки
      */
-    String annotation;
+    private String annotation;
 
     /**
      * Статус записки, конвертация перечисления для хранения в базе данных
      */
     @Enumerated(EnumType.STRING)
     @Convert(converter = EnumConverter.class)
-    Status status = Status.NOT_STARTED;
+    private Status status = Status.NOT_STARTED;
 
     /**
      * Дата создания, при создании добавляем время создания записки
      */
-    LocalDateTime time = LocalDateTime.now();
+    @Transient
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern ("dd-MM-yyyy");
+
+    private String time = dateFormat.format(LocalDateTime.now());
+
 
 
 }
