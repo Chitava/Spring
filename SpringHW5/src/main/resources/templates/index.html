@@ -13,7 +13,11 @@
         <div class="field__note">
             <a th:each="n: ${notes}" th:href="@{'/note/' + ${n.Id}}">
                 <th:block th:switch="${n.status}" >
-                    <div th:case="'COMPLETED'" class="note note__end">
+                    <div th:case="*" class="note note__notstart">
+                        <div class="anotation"> <span th:text="${n.annotation}"></span></div>
+                        <div class="date"><span th:text="${n.time}"></span></div>
+                    </div>
+                    <div th:case="'NOT_STARTED'" class="note note__notstart">
                         <div class="anotation"> <span th:text="${n.annotation}"></span></div>
                         <div class="date"><span th:text="${n.time}"></span></div>
                     </div>
@@ -21,10 +25,11 @@
                         <div class="anotation"> <span th:text="${n.annotation}"></span></div>
                         <div class="date"><span th:text="${n.time}"></span></div>
                     </div>
-                    <div th:case="*" class="note note__notstart">
+                    <div th:case="'COMPLETED'" class="note note__end">
                         <div class="anotation"> <span th:text="${n.annotation}"></span></div>
                         <div class="date"><span th:text="${n.time}"></span></div>
                     </div>
+
                 </th:block>
             </a>
         </div>
