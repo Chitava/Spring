@@ -6,27 +6,24 @@
 
 body {
   background-image: url("/img/create_back.jpg");
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-.note__creator {
-  margin: 450px 700px;
-}
-
-/*input[type="text"]
-{
-    background: transparent;
-    border: none;
-}*/
 
 form {
+  margin-top: 170px;
+  margin-left: 600px;
+  padding-top: 30px;
+  width: 700px;
+  height: 680px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: start;
   gap: 20px;
-  width: 500px;
-  height: 300px;
-  background-image: url("/img/create_note.png");
+  background-image: url("/img/note.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -34,29 +31,53 @@ form {
 }
 
 textarea {
-  margin-top: 50px;
-  margin-left: 10px;
+  margin-top: 35px;
   height: 150px;
-  width: 350px;
+  width: 300px;
+  margin-right: 90px;
   background: transparent;
   border: none;
   font-size: 24px;
   word-break: break-all;
   overflow: hidden;
   outline: none;
+  line-height: 153%;
 }
 
-textarea:focus {
+select {
   border: none;
+}
+.text_lable {
+  font-size: 24px;
+}
+
+.status_lable {
+  margin-top: 3px;
+  font-size: 30px;
+}
+
+.choise {
+  margin-top: -11px;
+  font-size: 25px;
+}
+
+.time_lable {
+  margin-top: -5px;
+}
+
+.time {
+  margin-top: -5px;
+  font-size: 20px;
 }
 
 button {
+  margin-top: 50px;
   width: 200px;
   height: 50px;
   border-radius: 16px;
   border: none;
   box-shadow: 0 8px 10px grey;
-  opacity: 0.6;
+
   font-size: 16px;
 }
 

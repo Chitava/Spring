@@ -1,11 +1,9 @@
 package Chitava.SpringHW5.controllers;
-import Chitava.SpringHW5.models.Noute;
+import Chitava.SpringHW5.models.Note;
 import Chitava.SpringHW5.models.Status;
 import Chitava.SpringHW5.services.EnumConverter;
 import Chitava.SpringHW5.services.NoteService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,10 +45,19 @@ public class WebController {
         return "createnote";
    }
 
-    @PostMapping("/notecreate")
-    public String createNote (@RequestParam(value = "annotation")Noute noute, Model model){
-        service.saveNote(noute);
-        Collection<Noute> notes = service.findAllNotes();
+
+    /**
+     * Создание записки
+     * @param annotation Текст записки
+     * @param note записка
+     * @param model модель
+     * @return страницу со всеми записками
+     */
+    @RequestMapping(value="/notecreate", method= RequestMethod.POST)
+    public String createNote (@ModelAttribute("annotation")String annotation, Note note, Model model){
+        note.setAnnotation(annotation);
+        service.saveNote(note);
+        Collection<Note> notes = service.findAllNotes();
         model.addAttribute("notes", notes);
         return "index";
     }
@@ -76,15 +83,24 @@ public class WebController {
      */
     @GetMapping("/note/{id}")
     public String findById(@PathVariable Long id, Model model) {
-        Optional note = service.getById(id);
-        try {
-            model.addAttribute("note", note.get());
-            return "note";
-        } catch (NoSuchElementException e) {
-            model.addAttribute("message", e.getMessage());
-            return "404";
-        }
+        Note note = service.getById(id);
+        model.addAttribute("note", note);
+        return "note";
     }
+
+    /**
+     * Ркдактирование заметки
+     * @param note заметка
+     * @param model модель
+     * @return страницу со всеми заметками
+     */
+//    @RequestMapping(value="/noteedit", method= RequestMethod.POST)
+//    public String editNote (Note note, Model model){
+//        service.updateNote(note);
+//        Collection<Note> notes = service.findAllNotes();
+//        model.addAttribute("notes", notes);
+//        return "index";
+//    }
 
     /**
      * Метод удаления записки из базы данных
@@ -113,12 +129,7 @@ public class WebController {
         return "index";
     }
 
-    @PutMapping("edit/{id}")
-    public String chengenNoteStatus(@PathVariable Long id, @RequestBody String stat, Model model){
-        service.updateStatusNote(id, converter.convertToEntityAttribute(stat));
-        model.addAttribute(service.findAllNotes());
-        return "index";
-    }
+
 
 
 }

@@ -1,17 +1,14 @@
 package Chitava.SpringHW5.repositorys;
-import Chitava.SpringHW5.models.Noute;
+import Chitava.SpringHW5.models.Note;
 import Chitava.SpringHW5.models.Status;
-import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.List;
 
 
 /**
@@ -20,7 +17,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface NoteRepository extends JpaRepository<Noute, Long> {
+public interface NoteRepository extends JpaRepository<Note, Long> {
 
 
     /**
@@ -28,16 +25,15 @@ public interface NoteRepository extends JpaRepository<Noute, Long> {
      * @param status статус заметки
      * @return Коллекцию записок
      */
-    Collection<Noute> findByStatus(Status status);
+    Collection<Note> findByStatus(Status status);
 
-    /**
-     * Метод изменения статуса записки
-     * @param id идентификатор записки
-     * @param status статус записки
-     */
 
-    @Modifying
-    @Query(value = "update notes set notes.status = :status where notes.id = :id", nativeQuery = true)
-    void updateStatus(@Param("status") Status status, @Param("id") Long id);
+//    @Modifying
+//    @Query("UPDATE notes n SET n.annotation =:annotation, n.status =:status WHERE n.id =:id" )
+//    void updateNoteById(@Param("annotation") String annotation, @Param("status") Status status, @Param("id") Long id);
+
+
+//    void updateResponsibleNoteByID(Long id);
+
 
 }

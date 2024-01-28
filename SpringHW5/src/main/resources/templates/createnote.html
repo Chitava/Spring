@@ -9,12 +9,21 @@
   </head>
   <body>
     <section class="note__creator">
-
-      <form action="#" th:action="@{/notecreate}" th:object="${noute}" method="post" id="noteform">
+      <form
+        action="#"
+        th:action="@{/notecreate}"
+        th:object="${note}"
+        method="post"
+      >
         <h2>Введите текст записки</h2>
-
-<!--        <textarea  type="text"  th:field="*{annotation}" autofocus placeholder="Введите текст заметки" form="noteform" >-->
-<!--        </textarea>-->
+        <textarea
+          type="text"
+          name="annotation"
+          field="*{note.annotation}"
+          autofocus
+          placeholder="Введите текст заметки"
+        >
+        </textarea>
         <button>Создать записку</button>
       </form>
     </section>

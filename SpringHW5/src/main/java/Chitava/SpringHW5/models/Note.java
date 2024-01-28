@@ -1,10 +1,8 @@
 package Chitava.SpringHW5.models;
-import Chitava.SpringHW5.services.EnumConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -15,12 +13,13 @@ import java.time.format.DateTimeFormatter;
 @Entity
 @NoArgsConstructor
 @Table(name = "notes")
-public class Noute {
+public class Note {
     /**
      * Идентификатор
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(updatable = false)
     private Long id;
 
     /**
@@ -32,7 +31,7 @@ public class Noute {
      * Статус записки, конвертация перечисления для хранения в базе данных
      */
     @Enumerated(EnumType.STRING)
-    @Convert(converter = EnumConverter.class)
+//    @Convert(converter = EnumConverter.class)
     private Status status = Status.NOT_STARTED;
 
     /**

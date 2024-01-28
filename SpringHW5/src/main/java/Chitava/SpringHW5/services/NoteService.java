@@ -1,10 +1,9 @@
 package Chitava.SpringHW5.services;
 
-import Chitava.SpringHW5.models.Noute;
+import Chitava.SpringHW5.models.Note;
 import Chitava.SpringHW5.models.Status;
 import Chitava.SpringHW5.repositorys.NoteRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -30,8 +29,8 @@ public class NoteService {
      *
      * @return коллекцию заметок
      */
-    public Collection<Noute> findAllNotes() {
-        return (Collection<Noute>) repository.findAll();
+    public Collection<Note> findAllNotes() {
+        return (Collection<Note>) repository.findAll();
     }
 
     /**
@@ -40,8 +39,11 @@ public class NoteService {
      * @param id идентификатор
      * @return заметку с идентификационным номером
      */
-    public Optional<Noute> getById(Long id) {
-        return repository.findById(id);
+    public Note getById(Long id) {
+        Optional note = repository.findById(id);
+
+        if (note.isPresent()){return repository.findById(id).get();}
+        return new Note();
     }
 
     /**
@@ -49,7 +51,7 @@ public class NoteService {
      *
      * @param note записка
      */
-    public void saveNote(Noute note) {
+    public void saveNote(Note note) {
         repository.save(note);
     }
 
@@ -63,29 +65,28 @@ public class NoteService {
     }
 
     /**
-     *
      * @param status
      * @return
      */
-    public Collection<Noute> findeByStatus(Status status) {
+    public Collection<Note> findeByStatus(Status status) {
 
         return repository.findByStatus(status);
     }
 
 
     /**
-     * Метод обновления статуса записки
-     * @param status статус
-     * @param id идентификатор записки
+     * @param note записка
+     *
      */
-    public void updateStatusNote(Long id, Status status){
-        repository.updateStatus(status, id);
-
+//    public void updateNote(Note note) {
+//        repository.updateNoteById(note.getAnnotation(), note.getStatus(), note.getId());
+//        repository.updateResponsibleNoteByID(note.getId());
+//        }
+    //endregion
     }
-        //endregion
 
 
 
 
-    }
+
 
