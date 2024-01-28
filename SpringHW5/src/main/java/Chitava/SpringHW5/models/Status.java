@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 
 public enum Status {
     //region поля
-    NOT_STARTED ("не начата"),
-    IN_PROGRESS ("в процессе выполнения"),
-    COMPLETED ("завершена");
-    private String status;
-    //endregion
-    @Override
-    public String toString() {
-        return status;
-    }
+    NOT_STARTED,
+    IN_PROGRESS,
+    COMPLETED,
+//    private String status;
+//    //endregion
+//    @Override
+//    public String toString() {
+//        return status;
+//    }
 
 }

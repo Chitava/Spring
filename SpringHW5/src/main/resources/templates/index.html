@@ -12,48 +12,28 @@
     <section class="field">
         <div class="field__note">
             <a th:each="n: ${notes}" th:href="@{'/note/' + ${n.Id}}">
-            <div th:switch="${n.status}">
-                <div th:case="'завершена'" class="note note__end">
-                    <div class="anotation"> <span th:text="${n.annotation}"></span></div>
-                    <div class="date"><span th:text="${n.time}"></span></div>
-                </div>
-                <div th:case="'в процессе выполнения'" class="note note__begin">
-                    <div class="anotation"> <span th:text="${n.annotation}"></span></div>
-                    <div class="date"><span th:text="${n.time}"></span></div>
-                </div>
-                <div th:case="*" class="note note__notstart">
-                    <div class="anotation"> <span th:text="${n.annotation}"></span></div>
-                    <div class="date"><span th:text="${n.time}"></span></div>
-                </div>
-
-             </div>
+                <th:block th:switch="${n.status}" >
+                    <div th:case="'COMPLETED'" class="note note__end">
+                        <div class="anotation"> <span th:text="${n.annotation}"></span></div>
+                        <div class="date"><span th:text="${n.time}"></span></div>
+                    </div>
+                    <div th:case="'IN_PROGRESS'" class="note note__begin">
+                        <div class="anotation"> <span th:text="${n.annotation}"></span></div>
+                        <div class="date"><span th:text="${n.time}"></span></div>
+                    </div>
+                    <div th:case="*" class="note note__notstart">
+                        <div class="anotation"> <span th:text="${n.annotation}"></span></div>
+                        <div class="date"><span th:text="${n.time}"></span></div>
+                    </div>
+                </th:block>
             </a>
-
-
-            <
-            <!--<a href="">
-            <div class="note note__begin">
-                <div class="anotation">Сходить в магазин</div>
-                <div class="date">12.05.2024</div>
-            </div>
-            </a>
-            <a href="">
-            <div class="note note__end">
-                <div class="anotation">Lorem ipsum dolor sit amet </div>
-                <div class="date">12.05.2024</div>
-            </div>
-            </a>-->
-
-            
         </div>
         <div class="field__new">
-
             <a th:href="@{/create}">
                 <div class="new__note">
                     <h3>Создать новую<br>заметку</h3>
                 </div>
             </a>
-            
         </div>
     </section>
 </body>

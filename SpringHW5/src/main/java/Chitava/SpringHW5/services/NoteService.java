@@ -80,10 +80,8 @@ public class NoteService {
      * @param note записка
      */
     public void updateNote(Note note) {
+        repository.updateNoteById(note.getAnnotation(), note.getStatus(), note.getId());
 
-        repository.save(note);
-//        repository.updateNoteById(note.getAnnotation(), note.getStatus(), note.getId());
-//        repository.updateResponsibleNoteByID(note.getId());
     }
     //endregion
 }

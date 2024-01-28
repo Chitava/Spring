@@ -1,4 +1,5 @@
 package Chitava.SpringHW5.models;
+import Chitava.SpringHW5.services.EnumConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,7 @@ public class Note {
     /**
      * Статус записки, конвертация перечисления для хранения в базе данных
      */
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
 //    @Convert(converter = EnumConverter.class)
     private Status status = Status.NOT_STARTED;
 

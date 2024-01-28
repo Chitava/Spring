@@ -96,9 +96,10 @@ public class WebController {
      */
     @RequestMapping(value="/noteedit/{id}", method= RequestMethod.POST)
     public String editNote (Note note, Model model){
-        System.out.println(note);
         service.updateNote(note);
-        model.addAttribute(service.findAllNotes());
+        System.out.println(note.getStatus());
+        model.addAttribute("notes", service.findAllNotes());
+        model.addAttribute("class", getClass(note.getStatus()));
         return "index";
     }
 
@@ -112,7 +113,7 @@ public class WebController {
     @DeleteMapping("/delete/{id}")
     public String deletById(@PathVariable Long id, Model model) {
         service.deleteNode(id);
-        model.addAttribute(service.findAllNotes());
+        model.addAttribute("notes", service.findAllNotes());
         return "index";
     }
 
@@ -129,6 +130,17 @@ public class WebController {
         return "index";
     }
 
+    private String getClass(Status status) {
+        System.out.println(status);
+        switch (status) {
+            case IN_PROGRESS:
+                return "note note__begin";
+            case COMPLETED:
+                return "note__end";
+            default:
+                return "note__notstart";
+        }
+    }
 
 
 
