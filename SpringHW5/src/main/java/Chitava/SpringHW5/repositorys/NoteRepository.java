@@ -16,7 +16,7 @@ import java.util.Collection;
  */
 
 @Repository
-@Transactional
+
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
 
@@ -28,9 +28,14 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     Collection<Note> findByStatus(Status status);
 
 
-//    @Modifying
-//    @Query("UPDATE notes n SET n.annotation =:annotation, n.status =:status WHERE n.id =:id" )
-//    void updateNoteById(@Param("annotation") String annotation, @Param("status") Status status, @Param("id") Long id);
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE notes SET annotation =:annotation, status =:status WHERE id =:id", nativeQuery = true)
+    void updateNoteById(@Param("annotation") String annotation, @Param("status") Status status, @Param("id") Long id);
+
+
+
+
 
 
 //    void updateResponsibleNoteByID(Long id);

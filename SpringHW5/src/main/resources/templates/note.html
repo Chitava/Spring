@@ -9,11 +9,12 @@
     <section class="note__editor">
       <form
         action="#"
-        th:action="@{/noteedit}"
+        th:action="@{'/noteedit/' + ${note.Id}}"
         th:object="${note}"
         method="post"
         id="note"
       >
+        <div field="*{note.Id}" th:text = "${note.id}"></div>
         <label class="text_lable" for="note">Текст записки</label>
         <textarea
           type="text"
@@ -25,7 +26,6 @@
         >
         </textarea>
         <label class="status_lable" for="note">Статус</label>
-
           <select class="choise" name="status" field="status" id="pet-select">
           <option value="IN_PROGRESS">В процессе</option>
           <option value="COMPLETED">Закончена</option>

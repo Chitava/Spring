@@ -42,7 +42,9 @@ public class NoteService {
     public Note getById(Long id) {
         Optional note = repository.findById(id);
 
-        if (note.isPresent()){return repository.findById(id).get();}
+        if (note.isPresent()) {
+            return repository.findById(id).get();
+        }
         return new Note();
     }
 
@@ -76,14 +78,16 @@ public class NoteService {
 
     /**
      * @param note записка
-     *
      */
-//    public void updateNote(Note note) {
+    public void updateNote(Note note) {
+
+        repository.save(note);
 //        repository.updateNoteById(note.getAnnotation(), note.getStatus(), note.getId());
 //        repository.updateResponsibleNoteByID(note.getId());
-//        }
-    //endregion
     }
+    //endregion
+}
+
 
 
 

@@ -11,7 +11,7 @@
 <body>
     <section class="field">
         <div class="field__note">
-            <a th:each="n: ${notes}" th:href="@{'/note/' + ${n.Id}  }">
+            <a th:each="n: ${notes}" th:href="@{'/note/' + ${n.Id}}">
             <div th:switch="${n.status}">
                 <div th:case="'завершена'" class="note note__end">
                     <div class="anotation"> <span th:text="${n.annotation}"></span></div>

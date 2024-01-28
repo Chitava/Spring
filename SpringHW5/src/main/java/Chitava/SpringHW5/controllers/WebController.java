@@ -94,13 +94,13 @@ public class WebController {
      * @param model модель
      * @return страницу со всеми заметками
      */
-//    @RequestMapping(value="/noteedit", method= RequestMethod.POST)
-//    public String editNote (Note note, Model model){
-//        service.updateNote(note);
-//        Collection<Note> notes = service.findAllNotes();
-//        model.addAttribute("notes", notes);
-//        return "index";
-//    }
+    @RequestMapping(value="/noteedit/{id}", method= RequestMethod.POST)
+    public String editNote (Note note, Model model){
+        System.out.println(note);
+        service.updateNote(note);
+        model.addAttribute(service.findAllNotes());
+        return "index";
+    }
 
     /**
      * Метод удаления записки из базы данных

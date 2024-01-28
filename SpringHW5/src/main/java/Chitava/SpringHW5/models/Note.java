@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * Класс записок
  */
 @Data
-@Entity
+@Entity(name = "note")
 @NoArgsConstructor
 @Table(name = "notes")
 public class Note {
@@ -18,7 +18,7 @@ public class Note {
      * Идентификатор
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(updatable = false)
     private Long id;
 
