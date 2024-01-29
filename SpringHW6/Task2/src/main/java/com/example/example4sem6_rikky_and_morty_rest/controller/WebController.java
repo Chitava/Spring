@@ -1,6 +1,7 @@
 package com.example.example4sem6_rikky_and_morty_rest.controller;
 
 import com.example.example4sem6_rikky_and_morty_rest.domain.Characters;
+import com.example.example4sem6_rikky_and_morty_rest.domain.Result;
 import com.example.example4sem6_rikky_and_morty_rest.service.ServiceApi;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
@@ -24,6 +26,14 @@ public class WebController {
         ResponseEntity caracters = new ResponseEntity<>(allCharacters, HttpStatus.OK);
         model.addAttribute("characters", caracters.getBody());
         return "index";
+    }
+
+    @GetMapping("/character/{id}")
+    public String getCharacte(@PathVariable ("id") int id, Model model){
+        Characters allCharacters = serviceApi.getAllCharacters();
+        Result character = allCharacters.getResults().get(id);
+        model.addAttribute("character",  character);
+        return "character";
     }
 
 

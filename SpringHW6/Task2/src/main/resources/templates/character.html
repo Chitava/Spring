@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link th:href="@{/style.css}" rel="stylesheet" />
+    <title th:text="${character.name}"></title>
+  </head>
+  <body>
+    <section class="full_character">
+      <div class="baner__character">
+        <h1>Добро пожаловать к <span th:text="${character.name}"></span></h1>
+        <div class="container">
+          <div class="character__photo" th:style="'background-image:url(' + @{${character.image}} + ');'"
+               th:text="${character.name}">
+          </div>
+          <div class="character_charact">
+            <div class="character__data">
+              <div><p>Статус:</p></div>
+              <div class="character__txt" th:text="${character.status}"></div>
+            </div>
+            <div class="character__data">
+              <div><p>Вид:</p></div>
+              <div class="character__txt" th:text="${character.species}"></div>
+            </div>
+            <div class="character__data">
+              <div><p>Тип:</p></div>
+              <div class="character__txt" th:text="${character.type}"></div>
+            </div>
+            <div class="character__data">
+              <div><p>Пол:</p></div>
+              <div class="character__txt" th:text="${character.gender}"></div>
+            </div>
+            <div class="character__data">
+              <div><p>Дата создания:</p></div>
+              <div class="character__txt" th:text="${character.created}"></div>
+            </div>
+          </div>
+          <a class="character__a" th:href="@{/}"><button>На главную</button></a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
