@@ -8,60 +8,19 @@
     <title>Рики и Морти</title>
 </head>
 <body>
-
-    
-
     <div class="full__frame">
-        <h1>Добро пожаловать к Рики и Морти</h1>
-        <div class="persons" th:each="c: ${characters.results}" th:href="@{'/caracter/' + ${c.Id}}">
-            <a href="#">
-                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
-                    <h3>Эрик</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
-                    <h3>Эрик</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
-                    <h3>Эрик</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
-                    <h3>Эрик</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
-                    <h3>Эрик</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
-                    <h3>Эрик</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
-                    <h3>Эрик</h3>
-                </div>
-            </a>
-
-        </div>        
-
-        <block >
-            
-        </block>
-    </div>
-
-
-
-
-
-
+        <div class="baner"><h1>Добро пожаловать к Рики и Морти</h1>
+            <div class="persons" th:each="c: ${characters.results}" th:href="@{'/caracter/' + ${c.Id}}">
+                <a href="#">
+                    <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                        <h3>Эрик</h3>
+                    </div>
+                </a>
+            </div>        
+        </div>
+    </div>        
+</body>
+</html>
     <div th:text="${c.id}"></div>
     <div th:text="${c.name}"></div>
     <div th:text="${c.status}"></div>
@@ -87,6 +46,5 @@
 
 
 
-</body>
-</html>
+
 

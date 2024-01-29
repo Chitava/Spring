@@ -28,6 +28,11 @@ h1{
     
 }
 
+.baner{
+    margin: 0 auto;
+    width: 76%;
+}
+
 .persons{
     padding: 0 auto;
     display: grid;
@@ -53,6 +58,7 @@ a{
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 16px 19px 19px rgb(44, 44, 44);
+    border-radius: 12px;
        
     
 }
