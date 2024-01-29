@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Рики и Морти</title>
+</head>
+<body>
+
+    
+
+    <div class="full__frame">
+        <h1>Добро пожаловать к Рики и Морти</h1>
+        <div class="persons" th:each="c: ${characters.results}" th:href="@{'/caracter/' + ${c.Id}}">
+            <a href="#">
+                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                    <h3>Эрик</h3>
+                </div>
+            </a>
+            <a href="#">
+                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                    <h3>Эрик</h3>
+                </div>
+            </a>
+            <a href="#">
+                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                    <h3>Эрик</h3>
+                </div>
+            </a>
+            <a href="#">
+                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                    <h3>Эрик</h3>
+                </div>
+            </a>
+            <a href="#">
+                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                    <h3>Эрик</h3>
+                </div>
+            </a>
+            <a href="#">
+                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                    <h3>Эрик</h3>
+                </div>
+            </a>
+            <a href="#">
+                <div class="person" style="background-image: url(/static/DSCN4589.JPG);">
+                    <h3>Эрик</h3>
+                </div>
+            </a>
+
+        </div>        
+
+        <block >
+            
+        </block>
+    </div>
+
+
+
+
+
+
+    <div th:text="${c.id}"></div>
+    <div th:text="${c.name}"></div>
+    <div th:text="${c.status}"></div>
+    <div th:text="${c.species}"></div>
+    <div th:text="${c.type}"></div>
+    <div th:text="${c.gender}"></div>
+    <div th:text="${c.image}"></div>
+    <div th:text="${c.url}"></div>
+    <div th:text="${c.created}"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
