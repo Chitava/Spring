@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    background-image: url("/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.field{
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    
+    width: 95%;
+    height: 690px;
+}
+
+.field__note{
+   width: 90%;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   
+   gap: 20px;
+}
+
+.new__note{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;    
+    height: 200px;
+    background-image: url("/img/new_note.png");
+    background-size: cover;
+    color: black;    
+}
+
+.new__note h3{
+    margin-top: 40px;
+    transform: rotate(5deg);
+    text-align: center;
+}
+
+.new__note:hover{
+    transform: scale(1.1);
+}
+
+.note{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;    
+    height: 250px;
+    color: black;
+}
+
+.note:hover{
+    transform: scale(1.1);
+}
+
+.note__notstart{
+    background-image: url("/img/note_notstart.png");
+    background-size: cover;
+   
+}
+
+.note__notstart .anotation{
+    width: 50%;
+    height: 60%;
+    margin-top: 40px;
+    padding: 0 20px;    
+    transform: rotate(-6deg);
+    font-size: 18px;
+    font-weight: bold;
+    word-break: break-all;   
+}
+
+.note__notstart .date{
+    width: 70%;
+    transform: rotate(-6deg);
+    text-align: end;
+    font-size: 24px;
+    font-weight: bold; 
+}
+
+.note__begin{
+    background-image: url("/img/note_begin.png");
+    background-size: cover;
+}
+
+.note__begin .anotation{
+    width: 50%;
+    height: 60%;
+    margin-top: 60px;
+    padding: 0 20px;    
+    transform: rotate(4deg);
+    font-size: 18px;
+    font-weight: bold;
+    word-break: break-all;   
+}
+
+.note__begin .date{
+    width: 70%;
+    transform: rotate(4deg);
+    text-align: start;
+    font-size: 24px;
+    font-weight: bold; 
+    margin-top: -10px;
+}
+
+.note__end{
+    background-image: url("/img/note_end.png");
+    background-size: cover;
+}
+
+.note__end .anotation{
+    width: 70%;
+    height: 60%;
+    margin-top: 45px;
+    padding: 0 20px;    
+    transform: rotate(-6deg);
+    font-size: 18px;
+    font-weight: bold;
+    word-break: break-all;   
+}
+
+.note__end .date{
+    width: 70%;
+    transform: rotate(-6deg);
+    text-align: end;
+    font-size: 24px;
+    font-weight: bold; 
+}
