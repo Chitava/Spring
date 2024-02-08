@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Все студенты</title>
+</head>
+<body>
+<h1>Студенты</h1>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Группа</th>
+        <th>Средний балл</th>
+    </tr>
+    <tr th:each="s: ${students}" >
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.groupe}"></td>
+        <td th:text="${s.averageScore}"></td>
+    </tr>
+</table>
+</body>
+</html>

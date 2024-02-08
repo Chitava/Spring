@@ -1,0 +1,13 @@
+server:
+  port: 4002
+spring:
+  application:
+    name: WebClient
+info:
+  app:
+    name:Web Client
+  company:
+    name:GB
+  build:
+    version:
+      ???????? ??????? ? 9
