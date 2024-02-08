@@ -19,6 +19,7 @@ public class WebServise {
     private HttpHeaders headers = new HttpHeaders();
     private static final String allStudents = "http://localhost:4001/server/all";
     private static final String delStudent = "http://localhost:4001/server/del";
+    private static final String addStudent = "http://localhost:4001/server/add";
 
     public Student[] getAllstudents() {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
