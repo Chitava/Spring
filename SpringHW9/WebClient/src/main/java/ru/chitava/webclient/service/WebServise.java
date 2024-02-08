@@ -8,7 +8,10 @@ import org.springframework.web.client.RestTemplate;
 import ru.chitava.webclient.model.Student;
 
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -26,5 +29,15 @@ public class WebServise {
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Student[]> responce = template.exchange(allStudents, HttpMethod.GET,entity, Student[].class);
         return responce.getBody();
+    }
+
+    public Student addStudent(Student student){
+        HttpEntity<Student> requestBody = new HttpEntity<>(student);
+        System.out.println(requestBody);
+        ResponseEntity<Student> result
+                = template.postForEntity(addStudent, requestBody, Student.class);
+
+        System.out.println("Status code:" + result.getStatusCode());
+        return student;
     }
 }

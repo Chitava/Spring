@@ -3,6 +3,13 @@ server:
 spring:
   application:
     name: WebClient
+  http:
+    encoding:
+      charset:
+        UTF-8
+      enabled:
+        true
+
 info:
   app:
     name:Web Client

@@ -1,16 +1,11 @@
 package ru.chitava.webclient.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.chitava.webclient.model.Student;
 import ru.chitava.webclient.service.WebServise;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 
 @Controller
@@ -27,7 +22,14 @@ public class WebController {
     }
 
     @GetMapping("/add")
-    public String addStudent(){
+    public String add(Model model){
+        model.addAttribute("student", new Student());
         return "add";
+    }
+
+    @RequestMapping(value = "/addstudent", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public void addStudent(Student student, Model model){
+        service.addStudent(student);
+        allStudents(model);
     }
 }

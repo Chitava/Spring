@@ -35,7 +35,7 @@ public class Controller {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<String> addStudent(@RequestBody Student student) {
         repository.save(student);
-        return new ResponseEntity<>("Студент добавлен", HttpStatus.OK);
+        return new ResponseEntity<>("Студент добавлен", HttpStatus.CREATED);
     }
 
     /**
