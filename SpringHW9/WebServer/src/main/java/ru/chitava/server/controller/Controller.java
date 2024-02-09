@@ -55,19 +55,14 @@ public class Controller {
 
     /**
      * Метод обработки запроса на удаление записи по идентификатору
-     * @param id идентификатор записи информации о студенте
+     * @param student удаляемый студент
      * @return Информация что запись удалена
      */
-    @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteStudent(@PathVariable("id") Long id) {
-        Student student;
-        try {
-            student = repository.findById(id).get();
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        repository.deleteById(id);
-        return new ResponseEntity<>(String.format("Студент с именем %s удален", student.getName()), HttpStatus.OK);
+    @RequestMapping(value = "/del", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteStudent(@RequestBody Student student) {
+        System.out.println(student);
+        repository.deleteById(student.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
