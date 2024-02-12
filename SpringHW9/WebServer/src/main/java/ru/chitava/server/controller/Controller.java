@@ -1,8 +1,10 @@
 package ru.chitava.server.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.chitava.server.model.Student;
 import ru.chitava.server.repository.StudentRepository;
@@ -24,7 +26,6 @@ public class Controller {
      * Репозиторий хранения записей информации о студентах
      */
     StudentRepository repository;
-
 
     /**
      * Обработка запроса на добавление новой записи о студенте
@@ -50,20 +51,20 @@ public class Controller {
             allStudents = repository.findAll();
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }return new ResponseEntity<>((List<Student>) allStudents, HttpStatus.OK);
+        }
+        return new ResponseEntity<>((List<Student>) allStudents, HttpStatus.OK);
     }
 
     /**
      * Метод обработки запроса на удаление записи по идентификатору
-     * @param student удаляемый студент
+     *
+     * @param id идентификатор удаляемого студента
      * @return Информация что запись удалена
      */
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteStudent(@RequestBody Student student) {
-        System.out.println(student);
-        repository.deleteById(student.getId());
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<List<Student>> deleteStudent(@RequestBody Long id) {
+        repository.deleteById(id);
+        return findAllStudents();
     }
-
 }
 

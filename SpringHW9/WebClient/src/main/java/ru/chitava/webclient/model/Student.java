@@ -6,6 +6,13 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
+/**
+ * Класс студент
+ * поле id  идентификатор студента
+ * поле name имя студента
+ * поле groupe номер группы студента
+ * поле averageScore средний бал успеваимости
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
