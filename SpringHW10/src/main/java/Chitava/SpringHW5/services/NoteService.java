@@ -4,6 +4,7 @@ import Chitava.SpringHW5.models.Note;
 import Chitava.SpringHW5.models.Status;
 import Chitava.SpringHW5.repositorys.NoteRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -14,6 +15,7 @@ import java.util.Optional;
  */
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class NoteService {
     //region поля
     /**
