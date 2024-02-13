@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style_noteedit.css}" />
+    <title>Редактировать заметку</title>
+  </head>
+  <body>
+    <section class="note__editor">
+      <form
+        action="#"
+        th:action="@{'/noteedit/' + ${note.Id}}"
+        th:object="${note}"
+        method="post"
+        id="note"
+      >
+        <div field="*{note.Id}" th:text = "${note.id}"></div>
+        <label class="text_lable" for="note">Текст записки</label>
+        <textarea
+          type="text"
+          name="annotation"
+          field="*{note.annotation}"
+          autofocus
+          placeholder="Введите текст заметки"
+          th:text = "${note.annotation}"
+        >
+        </textarea>
+        <label class="status_lable" for="note">Статус</label>
+          <select class="choise" name="status" field="status" id="pet-select">
+          <option value="IN_PROGRESS">В процессе</option>
+          <option value="COMPLETED">Закончена</option>
+        </select>
+        <label class="time_lable" for="note">Время создания</label>
+        <label class="time" for="note" th:text="${note.time}"></label>
+        <div></div>
+        <button>Сохранить записку</button>
+      </form>
+    </section>
+  </body>
+</html>
