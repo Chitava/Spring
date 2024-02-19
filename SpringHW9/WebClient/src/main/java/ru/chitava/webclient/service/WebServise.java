@@ -33,9 +33,7 @@ public class WebServise {
 
     public Student addStudent(Student student){
         HttpEntity<Student> requestBody = new HttpEntity<>(student);
-        System.out.println(requestBody);
-        ResponseEntity<Student> result
-                = template.postForEntity(addStudent, requestBody, Student.class);
+        ResponseEntity<Student> result = template.postForEntity(addStudent, requestBody, Student.class);
 
         System.out.println("Status code:" + result.getStatusCode());
         return student;

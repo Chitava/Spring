@@ -27,7 +27,7 @@ public class WebController {
         return "add";
     }
 
-    @RequestMapping(value = "/addstudent", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/addstudent", method = RequestMethod.POST)
     public void addStudent(Student student, Model model){
         service.addStudent(student);
         allStudents(model);
