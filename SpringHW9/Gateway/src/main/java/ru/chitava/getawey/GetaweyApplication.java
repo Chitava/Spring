@@ -13,6 +13,11 @@ public class GetaweyApplication {
 		SpringApplication.run(GetaweyApplication.class, args);
 	}
 
+	/**
+	 * Параметры маршрутизатора
+	 * @param builder возращает маршрутную карту для сервера и клиента
+	 * @return
+	 */
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()

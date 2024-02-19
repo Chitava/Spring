@@ -1,15 +1,12 @@
 server:
   port: 4002
+
 spring:
   application:
     name: WebClient
   http:
     encoding:
-      charset:
-        UTF-8
-      enabled:
-        true
-
+      charset: UTF-8
 info:
   app:
     name:Web Client

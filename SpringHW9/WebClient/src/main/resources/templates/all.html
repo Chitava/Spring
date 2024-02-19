@@ -11,14 +11,17 @@
 <table style="border-collapse: collapse; border: 1px solid grey;">
     <tr style="border: 1px solid grey;">
         <th style="border: 1px solid grey; width:200px; text-align:center;">Имя</th>
-        <th style="border: 1px solid grey; width:200px; text-align:center;" >Группа</th>
-        <th style="border: 1px solid grey; width:200px; text-align:center;" >Средний балл</th>
+        <th style="border: 1px solid grey; width:200px; text-align:center;">Группа</th>
+        <th style="border: 1px solid grey; width:200px; text-align:center;">Средний балл</th>
     </tr>
-    <tr style="border: 1px solid grey; text-align:center;"th:each="s: ${students}" >
-        <td style="border: 1px solid grey; text-align:center;" th:text="${s.name}"></td>
-        <td style="border: 1px solid grey; text-align:center;" th:text="${s.groupe}"></td>
-        <td style="border: 1px solid grey; text-align:center;"th:text="${s.averageScore}"></td>
+
+    <tr style="border: 1px solid grey; text-align:center;" th:each="s: ${students}" th:field="${s.Id}" th:value="${s.Id}">
+        <td style="border: 1px solid grey; text-align:center;" th:text="${s.name}" th:field="${s.name}"></td>
+        <td style="border: 1px solid grey; text-align:center;" th:text="${s.groupe}" th:field="${s.groupe}"></td>
+        <td style="border: 1px solid grey; text-align:center;" th:text="${s.averageScore}" th:field="${s.averageScore}"></td>
+        <td> <a th:href="@{'/client/delstudent/'+${s.Id}}"><button >Удалить запись</button></a></td>
     </tr>
+
 </table>
 </body>
 </html>

@@ -7,11 +7,11 @@ spring:
     gateway:
       routes:
         - id: webserver
-          uri: http://localhost:4001/
+          uri: http://localhost:4001/server
           predicates:
             - Path=/server/**
         - id: webclient
-          uri: http://localhost:4002/
+          uri: http://localhost:4002/client
           predicates:
             - Path=/client/**
 
